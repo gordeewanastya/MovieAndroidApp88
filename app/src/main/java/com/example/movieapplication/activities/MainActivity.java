@@ -1,23 +1,44 @@
 package com.example.movieapplication.activities;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.movieapplication.R;
+import com.example.movieapplication.adapters.CategoryListAdapter;
+import com.example.movieapplication.adapters.FilmListAdapter;
 import com.example.movieapplication.adapters.SliderAdapters;
+import com.example.movieapplication.domain.GenresItem;
+import com.example.movieapplication.domain.ListFilm;
 import com.example.movieapplication.domain.SliderItems;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private RecyclerView.Adapter adapterBestMovies,adapterUpcoming,adapterCategory;
+    private RecyclerView recyclerViewBestMovies, recyclerViewUpcoming, recyclerViewCategory;
+    private RequestQueue mRequestQueue;
+    private StringRequest mStringRequest,mStringRequest2,mStringRequest3;
+    private ProgressBar loading1,loading2, loading3;
+
     private ViewPager2 viewPager2;
     private Handler slideHandler = new Handler();
 
@@ -28,6 +49,66 @@ public class MainActivity extends AppCompatActivity {
         
         initView();
         banners();
+        sendRequestBestMovies();
+        sendRequestCategory();
+        sendRequestUpcomingMovies();
+    }
+
+    private void sendRequestBestMovies() {
+        mRequestQueue = Volley.newRequestQueue(this);
+        loading1.setVisibility(View.VISIBLE);
+        mStringRequest = new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies?page=1", response -> {
+            Gson gson = new Gson();
+            loading1.setVisibility(View.GONE);
+            ListFilm items = gson.fromJson(response,ListFilm.class);
+            adapterBestMovies = new FilmListAdapter(items);
+            recyclerViewBestMovies.setAdapter(adapterBestMovies);
+
+        }, error -> {
+            loading1.setVisibility(View.GONE);
+            Log.i("UILover","onErrorResponse: " + error.toString());
+
+        });
+
+        mRequestQueue.add(mStringRequest);
+    }
+
+    private void sendRequestCategory() {
+        mRequestQueue = Volley.newRequestQueue(this);
+        loading2.setVisibility(View.VISIBLE);
+        mStringRequest2 = new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/genres", response -> {
+            Gson gson = new Gson();
+            loading2.setVisibility(View.GONE);
+            ArrayList<GenresItem> categoryList = gson.fromJson(response,new TypeToken<ArrayList<GenresItem>>(){}.getType());
+            adapterCategory = new CategoryListAdapter(categoryList);
+            recyclerViewCategory.setAdapter(adapterCategory);
+
+        }, error -> {
+            loading2.setVisibility(View.GONE);
+            Log.i("UILover","onErrorResponse: " + error.toString());
+
+        });
+
+        mRequestQueue.add(mStringRequest2);
+    }
+
+    private void sendRequestUpcomingMovies() {
+        mRequestQueue = Volley.newRequestQueue(this);
+        loading3.setVisibility(View.VISIBLE);
+        mStringRequest3 = new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies?page=2", response -> {
+            Gson gson = new Gson();
+            loading3.setVisibility(View.GONE);
+            ListFilm items = gson.fromJson(response,ListFilm.class);
+            adapterUpcoming = new FilmListAdapter(items);
+            recyclerViewUpcoming.setAdapter(adapterUpcoming);
+
+        }, error -> {
+            loading3.setVisibility(View.GONE);
+            Log.i("UILover","onErrorResponse: " + error.toString());
+
+        });
+
+        mRequestQueue.add(mStringRequest3);
     }
 
     private void banners() {
@@ -84,5 +165,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         viewPager2=findViewById(R.id.viewPagerSlider);
+
+        recyclerViewBestMovies = findViewById(R.id.view1);
+        recyclerViewBestMovies.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerViewUpcoming = findViewById(R.id.view3);
+        recyclerViewUpcoming.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerViewCategory = findViewById(R.id.view2);
+        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
+        loading1 = findViewById(R.id.progressBar1);
+        loading2 = findViewById(R.id.progressBar2);
+        loading3 = findViewById(R.id.progressBar3);
     }
 }

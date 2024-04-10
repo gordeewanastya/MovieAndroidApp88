@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/cat_background.xml" value="0.379" />
         <entry key="app/src/main/res/drawable/edittext_background.xml" value="0.361" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.379" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.38" />
@@ -11,6 +12,8 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.12858428955078127" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22752990722656252" />
         <entry key="app/src/main/res/layout/slide_item_container.xml" value="0.3796875" />
+        <entry key="app/src/main/res/layout/viewholder_category.xml" value="0.37864583333333335" />
+        <entry key="app/src/main/res/layout/viewholder_film.xml" value="0.37864583333333335" />
       </map>
     </option>
   </component>
