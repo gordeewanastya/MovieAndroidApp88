@@ -8,10 +8,13 @@
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.379" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.38" />
         <entry key="app/src/main/res/drawable/orange_button_background.xml" value="0.2632537841796875" />
+        <entry key="app/src/main/res/drawable/oval_btn_background.xml" value="0.313" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.23645699990762248" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.12858428955078127" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22752990722656252" />
         <entry key="app/src/main/res/layout/slide_item_container.xml" value="0.3796875" />
+        <entry key="app/src/main/res/layout/viewholder_actors.xml" value="0.2373092651367187" />
         <entry key="app/src/main/res/layout/viewholder_category.xml" value="0.37864583333333335" />
         <entry key="app/src/main/res/layout/viewholder_film.xml" value="0.37864583333333335" />
       </map>
