@@ -50,10 +50,11 @@ public class FilmListAdapter_2 extends RecyclerView.Adapter<FilmListAdapter_2.Vi
                 .into(holder.pic);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+            int clickedPosition = holder.getAdapterPosition();
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(holder.itemView.getContext(), DetailActivity.class);
-                intent.putExtra("id",items.get(position).getId());
+                intent.putExtra("id",items.get(clickedPosition).getId());
                 context.startActivity(intent);
             }
         });

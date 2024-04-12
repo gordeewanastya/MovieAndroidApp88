@@ -47,17 +47,24 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Film> films = new ArrayList<Film>(
             Arrays.asList(
                     new Film(1, "The Avengers", R.drawable.poster2, 8.4f, 143, "Earth's mightiest heroes must come together and learn to fight as" +
-                            " a team if they are to stop the mischievous Loki and his alien army from enslaving humanity."),
+                            " a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.",
+                            "Robert Downey Jr., Chris Evans, Scarlett Johansson", new ArrayList<>(Arrays.asList("Action", "Adventure", "Sci-Fi"))),
                     new Film(2, "Annette", R.drawable.annete, 6.5f, 139, "A stand-up comedian and his opera singer wife have" +
-                            " a 2-year-old daughter with a surprising gift."),
+                            " a 2-year-old daughter with a surprising gift.",
+                            "Adam Driver, Marion Cotillard, Simon Helberg", new ArrayList<>(Arrays.asList("Drama", "Musical", "Romance"))),
                     new Film(3, "Dune", R.drawable.dune, 7.5f, 155, "A mythic and emotionally charged hero's journey," +
-                            " 'Dune' tells the story of Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding."),
+                            " 'Dune' tells the story of Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding.",
+                            "Timothee Chalamet, Zendaya, Oscar Isaac", new ArrayList<>(Arrays.asList("Adventure", "Drama", "Sci-Fi"))),
                     new Film(4, "Jaws", R.drawable.jaws, 8.0f, 124, "When a killer shark " +
-                            "unleashes chaos on a beach resort, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down."),
+                            "unleashes chaos on a beach resort, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
+                            "Roy Scheider, Robert Shaw, Richard Dreyfuss", new ArrayList<>(Arrays.asList("Adventure", "Thriller"))),
                     new Film(5, "The Last of Us", R.drawable.last_of_us, 7.6f, 145, "In a post-apocalyptic world, a hardened survivor" +
-                            " and a young girl must make their way through a dangerous and infected landscape."),
+                            " and a young girl must make their way through a dangerous and infected landscape.",
+                            "Pedro Pascal, Bella Ramsey, Gabriel Luna", new ArrayList<>(Arrays.asList("Action", "Adventure", "Drama"))),
                     new Film(6, "Harry Potter", R.drawable.potter, 7.6f, 152, "A young wizard discovers his" +
-                            " true heritage and battles the dark forces threatening the wizarding world.")
+                            " true heritage and battles the dark forces threatening the wizarding world.",
+                            "Daniel Radcliffe, Emma Watson, Rupert Grint", new ArrayList<>(Arrays.asList("Adventure", "Family", "Fantasy")))
+
             )
     );
 

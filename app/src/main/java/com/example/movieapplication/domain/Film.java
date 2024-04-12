@@ -1,7 +1,7 @@
 package com.example.movieapplication.domain;
 
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+
+import java.util.List;
 
 public class Film {
     private int id;
@@ -11,6 +11,8 @@ public class Film {
     private int runTime;
     private String plot;
     private String actors;
+
+    private List<String> genres;
 
     public Film(int id, String title, int poster) {
         this.id = id;
@@ -27,7 +29,7 @@ public class Film {
         this.plot = plot;
     }
 
-    public Film(int id, String title, int poster, float imdbRating, int runTime, String plot, String actors) {
+    public Film(int id, String title, int poster, float imdbRating, int runTime, String plot, String actors,List<String> genres) {
         this.id = id;
         this.title = title;
         this.poster = poster;
@@ -35,6 +37,15 @@ public class Film {
         this.runTime = runTime;
         this.plot = plot;
         this.actors = actors;
+        this.genres = genres;
+    }
+
+    public List<String>  getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<String>  genres) {
+        this.genres = genres;
     }
 
     public float getImdbRating() {
